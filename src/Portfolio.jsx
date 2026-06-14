@@ -38,174 +38,6 @@ const COLORS = {
     espresso: '#2F2722',
 };
 
-// --- Resume Modal Component ---
-const ResumeModal = ({ isOpen, onClose }) => {
-    if (!isOpen) return null;
-
-    return (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-8 bg-[#2F2722]/80 backdrop-blur-sm">
-            <div className="bg-white w-full max-w-4xl h-full max-h-[90vh] rounded-lg shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
-
-                {/* Modal Header (Toolbar) */}
-                <div className="bg-[#5B5042] text-[#F8F4EC] px-6 py-4 flex justify-between items-center shrink-0">
-                    <div className="flex items-center gap-2">
-                        <FileText size={20} />
-                        <span className="font-bold tracking-widest uppercase">Harshit_Resume.pdf</span>
-                    </div>
-                    <div className="flex items-center gap-4">
-                        {/* <button
-                            onClick={() => window.print()}
-                            className="flex items-center gap-2 hover:text-[#C8B8A0] transition-colors text-sm font-bold uppercase"
-                        >
-                            <Printer size={16} />
-                            <span className="hidden sm:inline">Print</span>
-                        </button> */}
-                        <button onClick={onClose} className="hover:text-[#C8B8A0] transition-colors">
-                            <X size={24} />
-                        </button>
-                    </div>
-                </div>
-
-                {/* Resume Content (Scrollable) */}
-                <div className="flex-grow overflow-y-auto p-8 sm:p-12 bg-white text-[#2F2722] font-sans selection:bg-[#E8DFC8]">
-                    <div className="max-w-3xl mx-auto space-y-6 print:max-w-none">
-
-                        {/* Header */}
-                        <header className="border-b-2 border-[#2F2722] pb-6 mb-6 text-center">
-                            <h1 className="text-4xl font-bold uppercase tracking-wider mb-2">Harshit Suru</h1>
-                            <div className="flex flex-wrap justify-center gap-4 text-sm font-mono text-[#5B5042]">
-                                <span>suruharshit2005@gmail.com</span>
-                                <span>|</span>
-                                <span>+91 90592 27008</span>
-                                <span>|</span>
-                                <span>Hyderabad</span>
-                            </div>
-                            <div className="flex flex-wrap justify-center gap-4 text-sm font-bold text-[#5B5042] mt-2 uppercase">
-                                <a href="https://linkedin.com/in/suruharshit" className="hover:text-black hover:underline">LinkedIn</a>
-                                <span>•</span>
-                                <a href="https://github.com/HarshitSuru" className="hover:text-black hover:underline">GitHub</a>
-                                <span>•</span>
-                                <a href="#" className="hover:text-black hover:underline">LeetCode</a>
-                            </div>
-                        </header>
-
-                        {/* Bio */}
-                        <section>
-                            <p className="text-sm leading-relaxed text-justify">
-                                Highly motivated and results-driven Computer Science student with strong fundamentals in software engineering, object-oriented programming, and full-stack (MERN) web development. Proficient in Data Structures and Algorithms with consistent problem-solving practice on LeetCode, showcasing strong analytical and logical thinking skills.
-                            </p>
-                        </section>
-
-                        {/* Education */}
-                        <section>
-                            <h3 className="text-lg font-bold uppercase border-b border-[#C8B8A0] mb-3 pb-1">Education</h3>
-                            <div className="space-y-3">
-                                <div className="flex justify-between items-start">
-                                    <div>
-                                        <h4 className="font-bold">MLR Institute of Technology, Hyderabad</h4>
-                                        <p className="text-sm">B.Tech in Computer Science and Engineering</p>
-                                    </div>
-                                    <div className="text-right text-sm">
-                                        <p className="font-mono font-bold">Nov 2022 - May 2026</p>
-                                        <p>CGPA: 9.20/10</p>
-                                    </div>
-                                </div>
-                                <div className="flex justify-between items-start">
-                                    <div>
-                                        <h4 className="font-bold">Narayana Junior College</h4>
-                                        <p className="text-sm">MPC (Maths, Physics, Chemistry)</p>
-                                    </div>
-                                    <div className="text-right text-sm">
-                                        <p className="font-mono font-bold">Nov 2020 - Jun 2022</p>
-                                        <p>Percentage: 98.7%</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        {/* Skills */}
-                        <section>
-                            <h3 className="text-lg font-bold uppercase border-b border-[#C8B8A0] mb-3 pb-1">Technical Skills</h3>
-                            <div className="grid grid-cols-1 gap-2 text-sm">
-                                <p><span className="font-bold">Languages:</span> Java, HTML, CSS, JavaScript</p>
-                                <p><span className="font-bold">Web Tech:</span> React.js, REST APIs, Node.js, Express.js</p>
-                                <p><span className="font-bold">Databases:</span> MySQL, MongoDB</p>
-                                <p><span className="font-bold">Core Concepts:</span> Data Structures & Algorithms, OOPs, OS, DBMS</p>
-                                <p><span className="font-bold">Tools:</span> Git, GitHub</p>
-                            </div>
-                        </section>
-
-                        {/* Projects */}
-                        <section>
-                            <h3 className="text-lg font-bold uppercase border-b border-[#C8B8A0] mb-3 pb-1">Personal Projects</h3>
-                            <div className="space-y-4">
-                                <div>
-                                    <div className="flex justify-between font-bold">
-                                        <h4>TripNest</h4>
-                                        <span className="text-xs bg-[#E8DFC8] px-2 py-0.5 rounded-none">MERN Stack</span>
-                                    </div>
-                                    <ul className="list-disc list-inside text-sm mt-1 space-y-1 text-[#5B5042]">
-                                        <li>Engineered a dynamic travel platform where users can register, log in, browse destinations, and review.</li>
-                                        <li>Implemented secure user authentication and session management using Passport.js.</li>
-                                        <li>Enabled property owners to list and manage their travel destinations.</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <div className="flex justify-between font-bold">
-                                        <h4>Heart Disease Prediction System</h4>
-                                        <span className="text-xs bg-[#E8DFC8] px-2 py-0.5 rounded-none">Python, ML</span>
-                                    </div>
-                                    <ul className="list-disc list-inside text-sm mt-1 space-y-1 text-[#5B5042]">
-                                        <li>Machine learning-based application to predict likelihood of heart disease using health metrics.</li>
-                                        <li>Trained and evaluated a predictive model achieving 92% accuracy.</li>
-                                        <li>Streamlined the diagnostic process for healthcare professionals.</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <div className="flex justify-between font-bold">
-                                        <h4>Interview Preparation Partner - Voice Based AI Agent</h4>
-                                        <span className="text-xs bg-[#E8DFC8] px-2 py-0.5 rounded-none">AI, Voice, Python</span>
-                                    </div>
-                                    <ul className="list-disc list-inside text-sm mt-1 space-y-1 text-[#5B5042]">
-                                        <li>Developed a voice-first AI mock interview system that behaves like a real interviewer.</li>
-                                        <li>Asks role-specific, dynamically generated questions using adaptive conversational logic.</li>
-                                        <li>Listens to user responses through voice input and evaluates them using NLP techniques.</li>
-                                        <li>Generates structured feedback and improvement tips upon completion.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </section>
-
-                        {/* Achievements & Certifications */}
-                        <section>
-                            <h3 className="text-lg font-bold uppercase border-b border-[#C8B8A0] mb-3 pb-1">Achievements & Certifications</h3>
-                            <ul className="list-disc list-inside text-sm space-y-2 text-[#5B5042]">
-                                <li><span className="font-bold text-[#2F2722]">Winner - Innovation Challenge:</span> Centre for Innovation and Entrepreneurship, MLRIT.</li>
-                                <li><span className="font-bold text-[#2F2722]">Certified Smart Coder:</span> Data Structures and Algorithms by Smart Interviews.</li>
-                                <li><span className="font-bold text-[#2F2722]">Global Rank 4438:</span> Smart Interviews DSA contest (out of 43k+ participants).</li>
-                                <li><span className="font-bold text-[#2F2722]">LeetCode:</span> Solved 195+ DSA problems in Java.</li>
-                                <li><span className="font-bold text-[#2F2722]">NPTEL Certified:</span> Cloud Computing (2024).</li>
-                            </ul>
-                        </section>
-                    </div>
-                </div>
-            </div>
-
-            {/* Print Styles */}
-            <style>{`
-        @media print {
-          @page { margin: 0; }
-          body * { visibility: hidden; }
-          .fixed { position: absolute; inset: 0; background: white; }
-          .fixed * { visibility: visible; }
-          .fixed header, .fixed .bg-\\[\\#5B5042\\] { display: none; } /* Hide modal toolbar */
-          .overflow-y-auto { overflow: visible; height: auto; }
-        }
-      `}</style>
-        </div>
-    );
-};
-
 // --- Helper Components ---
 
 const SectionTitle = ({ children }) => (
@@ -563,7 +395,7 @@ const TimelineItem = ({ title, subtitle, date, description, icon }) => (
 
 export default function Portfolio() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [isResumeOpen, setIsResumeOpen] = useState(false);
+    const resumeLink = "https://drive.google.com/file/d/1Tbdu5E_jeCppw7G6t3hE-IfGLnXgzYOy/view";
 
     const navLinks = [
         { name: 'About', href: '#home' },
@@ -575,9 +407,6 @@ export default function Portfolio() {
 
     return (
         <div className="min-h-screen bg-[#F8F4EC] text-[#2F2722] font-sans selection:bg-[#C8B8A0] selection:text-[#2F2722] overflow-x-hidden">
-
-            {/* Resume Modal */}
-            <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
 
             {/* Navigation */}
             <nav className="fixed top-0 left-0 w-full z-50 border-b border-[#C8B8A0] bg-[#F8F4EC]/95 backdrop-blur-sm py-6">
@@ -599,13 +428,15 @@ export default function Portfolio() {
                         ))}
 
                         {/* Resume Button */}
-                        <button
-                            onClick={() => setIsResumeOpen(true)}
+                        <a
+                            href={resumeLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="flex items-center gap-2 bg-[#5B5042] text-[#F8F4EC] px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-[#2F2722] transition-colors"
                         >
                             <FileText size={14} />
                             Resume
-                        </button>
+                        </a>
                     </div>
 
                     <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
@@ -628,16 +459,16 @@ export default function Portfolio() {
                                 {link.name}
                             </a>
                         ))}
-                        <button
-                            onClick={() => {
-                                setIsResumeOpen(true);
-                                setMobileMenuOpen(false);
-                            }}
+                        <a
+                            href={resumeLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => setMobileMenuOpen(false)}
                             className="border-b border-[#C8B8A0] pb-2 flex items-center gap-2 text-[#5B5042] w-full text-left"
                         >
                             <FileText />
                             View Resume
-                        </button>
+                        </a>
                     </div>
                 </div>
             )}
